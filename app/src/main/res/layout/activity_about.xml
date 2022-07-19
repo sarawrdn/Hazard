@@ -225,7 +225,7 @@
                     android:id="@+id/link"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/ic_map"></ImageView>
+                    android:src="@drawable/ic_baseline_code_24"></ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -250,7 +250,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_map">
+                    android:src="@drawable/ic_baseline_copyright_24">
 
                 </ImageView>
 

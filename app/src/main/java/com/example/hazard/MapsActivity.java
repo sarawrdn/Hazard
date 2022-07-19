@@ -31,7 +31,8 @@ import com.google.gson.GsonBuilder;
 
 import java.util.Vector;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity
+        implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
@@ -41,7 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     Vector<MarkerOptions> markerOptions;
 
-    private String URL="http://192.168.1.107/webhazard/all.php"; //ip add
+    private String URL="http://192.168.1.107/WebHazard/all.php"; //192.168.1.107
     RequestQueue requestque;
     Gson gson;
     Information[] maklumats;
@@ -56,7 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         gson= new GsonBuilder().create();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.maps);
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         centerlocation = new LatLng(3.0, 101);
@@ -123,12 +124,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 Double lat = Double.parseDouble(info.hzLat);
                 Double lng = Double.parseDouble(info.hzLng);
-                String title = info.hzLocation;
-                String snippet = info.hzDesc;
+                String title = info.hzLocation +" : "+ info.hzDesc;
+                String time= "T :"+info.hzTime;
+                String date = "D :"+info.hzDate;
+                String nama= "Report:"+ info.hzRepname;
 
                 MarkerOptions marker = new MarkerOptions().position(new LatLng(lat, lng))
                         .title(title)
-                        .snippet(snippet);
+                        .snippet(nama+"  "+time+"  "+date);
                 //.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
 
                 mMap.addMarker(marker);
